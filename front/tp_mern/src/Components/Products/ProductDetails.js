@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -12,20 +11,6 @@ const ProductDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decodedToken = jwtDecode(token);
-        setUserId(decodedToken.id); 
-      } catch (error) {
-        console.error("Erreur lors de la lecture du token :", error);
-      }
-    } else {
-      console.error("Token non trouvé !");
-    }
-  }, []);
-
-  useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/product/${productId}`, {
@@ -34,6 +19,7 @@ const ProductDetails = () => {
           },
         });
         setProduct(response.data);
+        setUserId(response.data.author);
       } catch (err) {
         setError("Erreur lors de la récupération du produit.");
         console.error(err);
@@ -47,8 +33,9 @@ const ProductDetails = () => {
       if(userId === null) {
         return;
       }
+      console.log(userId);
       try {
-        const response = await axios.get(`http://localhost:8080/user/${userId}`, {
+        const response = await axios.get(`http://localhost:8080/user/${userId._id}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
