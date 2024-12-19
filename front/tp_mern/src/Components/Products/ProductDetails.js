@@ -6,7 +6,7 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [author, setAuthor] = useState(null);
-  const [userId, setUserId] = useState(null); 
+  const [user, setUser] = useState(null); 
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const ProductDetails = () => {
           },
         });
         setProduct(response.data);
-        setUserId(response.data.author);
+        setUser(response.data.author);
       } catch (err) {
         setError("Erreur lors de la récupération du produit.");
         console.error(err);
@@ -30,12 +30,12 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchAuthor = async () => {
-      if(userId === null) {
+      if(user === null) {
         return;
       }
-      console.log(userId);
+      console.log(user);
       try {
-        const response = await axios.get(`http://localhost:8080/user/${userId._id}`, {
+        const response = await axios.get(`http://localhost:8080/user/${user._id}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -47,7 +47,7 @@ const ProductDetails = () => {
       }
     };
     fetchAuthor();
-  }, [userId]);
+  }, [user]);
 
   if (error) {
     return <p>{error}</p>;
