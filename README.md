@@ -74,3 +74,12 @@ Ce projet permet à des utilisateurs de gérer des annonces (CRUD : Créer, Lire
     - Une fonctionnalité a été ajoutée pour filtrer les annonces par catégorie. 
     - Les catégories disponibles sont : Immobilier, Véhicules, Électronique, etc.
     - Un menu déroulant est présent sur la page d'accueil permettant à l'utilisateur de sélectionner une catégorie et d'afficher uniquement les annonces correspondantes.
+
+5) Détails d’une annonce
+- En cliquant sur "Voir l'annonce" dans la liste des annonces, l'utilisateur est redirigé vers une page détaillant l'annonce.
+- La page affiche les informations suivantes : 
+  - Titre
+  - Description
+  - Catégorie
+  - Prix
+  - Nom de l'utilisateur ayant posté l'annonce.
