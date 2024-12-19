@@ -14,7 +14,7 @@ Ce projet permet à des utilisateurs de gérer des annonces (CRUD : Créer, Lire
 
 ### Backend (Node.js / Express)
 1) Clonez le dépôt du projet :
-    - git clone https://github.com/votre-utilisateur/votre-projet.git
+    - git clone git@github.com:Nano-O15/tp_mern_mohand.git
     - cd votre-projet
 
 2) Allez dans le dossier du backend et installez les dépendances :
